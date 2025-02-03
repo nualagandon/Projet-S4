@@ -1,4 +1,5 @@
 const button = document.querySelector("button");
+const liste = document.querySelector("body");
 
 function requeteTisseo() {
     const xhr = new XMLHttpRequest();
@@ -10,7 +11,13 @@ function requeteTisseo() {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             const reponse = JSON.parse(xhr.responseText);
-            console.log(xhr.responseText);
+            console.log(reponse);
+
+            for (const {name: n, shortname: s} of reponse.lines.line) {
+                    console.log("Numéro : " + s + "Nom : " + n);
+            }
+            
+           
         }
     }
 
